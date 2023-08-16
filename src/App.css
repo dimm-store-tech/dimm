@@ -1,0 +1,9 @@
+
+.link-item{
+    cursor: pointer;
+    padding: 5px;
+}
+.link-item:hover{
+    background-color: rgba(158, 154, 154, 0.295);
+    border-radius: 3px
+}
