@@ -29,7 +29,7 @@
     height: 650px;
     width: 650px;
     background: conic-gradient(
-        transparent, transparent, transparent, #024dbe
+        transparent, transparent, transparent, #3ca6fd
     );
     animation: animate 4s linear infinite;
 }
