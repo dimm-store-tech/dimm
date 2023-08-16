@@ -1,15 +1,16 @@
-.cont{    
+.cont {
     position: relative;
     padding-inline: 32px;
     height: 500px;
-    width: 350px; 
+    width: 350px;
     background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
+    animation: moveUpDown 5s alternate infinite;
 }
+
 .cont::before {
     content: "";
     position: absolute;
@@ -19,8 +20,9 @@
         transparent, transparent, transparent, #ff1504
     );
     animation: animate 4s linear infinite;
-    animation-delay:-2s ;
+    animation-delay: -2s;
 }
+
 .cont::after {
     content: "";
     position: absolute;
@@ -31,18 +33,29 @@
     );
     animation: animate 4s linear infinite;
 }
+
 @keyframes animate {
-    0%{
-        transform: rotate(0)
+    0% {
+        transform: rotate(0);
     }
-    100%{
+    100% {
         transform: rotate(360deg);
     }
 }
-.image{
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.image {
     position: absolute;
     inset: 5px;
     background-color: #ffffff;
     z-index: 1;
-    border-radius:10px 0px 10px 0px ;
+    border-radius: 10px 0px 10px 0px;
 }
