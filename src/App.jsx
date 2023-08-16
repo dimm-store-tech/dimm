@@ -1,7 +1,7 @@
 import React from "react";
 import {Routes,Route} from 'react-router-dom'
 import Header from "./components/layout/Header";
-import './app.css';
+import './App.css';
 export default function App() {
   return (
     <>
