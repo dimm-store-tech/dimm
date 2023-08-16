@@ -18,8 +18,13 @@ import attendanceInactive from '../../img/icons-inactive/attendance.svg';
 import profileInactive from '../../img/icons-inactive/profile.svg';
 import homeInactive from '../../img/icons-inactive/home.svg';
 import clientsInactive from '../../img/icons-inactive/clients.svg';
+import { useAuth } from '../../context/AuthContext';
 
 function Header() {
+  const {isAutenticaded} = useAuth()
+  console.log(isAutenticaded)
+  if(!isAutenticaded) return 
+
   const initialActiveState = {
     home: true,
     profile: false,

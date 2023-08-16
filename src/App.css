@@ -1,4 +1,7 @@
-
+#root {
+    --color-text:#4c5661;
+    --color-primary: #0b5ed7;
+}
 .link-item{
     cursor: pointer;
     padding: 5px;
@@ -6,4 +9,13 @@
 .link-item:hover{
     background-color: rgba(158, 154, 154, 0.295);
     border-radius: 3px
+}
+.color-text{
+    color: var(--color-text) !important;
+}
+.color-text-primary{
+    color: var(--color-primary);
+}
+.button-primary{
+    background: linear-gradient(to top, #337894b2, #0b5ed7) !important;
 }

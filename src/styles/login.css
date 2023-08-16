@@ -1,0 +1,48 @@
+.cont{    
+    position: relative;
+    padding-inline: 32px;
+    height: 500px;
+    width: 350px; 
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+.cont::before {
+    content: "";
+    position: absolute;
+    height: 650px;
+    width: 650px;
+    background: conic-gradient(
+        transparent, transparent, transparent, #ff1504
+    );
+    animation: animate 4s linear infinite;
+    animation-delay:-2s ;
+}
+.cont::after {
+    content: "";
+    position: absolute;
+    height: 650px;
+    width: 650px;
+    background: conic-gradient(
+        transparent, transparent, transparent, #024dbe
+    );
+    animation: animate 4s linear infinite;
+}
+@keyframes animate {
+    0%{
+        transform: rotate(0)
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.image{
+    position: absolute;
+    inset: 5px;
+    background-color: #ffffff;
+    z-index: 1;
+    border-radius:10px 0px 10px 0px ;
+}
