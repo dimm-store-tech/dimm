@@ -22,9 +22,7 @@ import { useAuth } from '../../context/AuthContext';
 
 function Header() {
   const {isAutenticaded} = useAuth()
-  console.log(isAutenticaded)
-  if(!isAutenticaded) return 
-
+  // El menu se ocultara si el usuario no esta autenticado
   const initialActiveState = {
     home: true,
     profile: false,
@@ -54,8 +52,13 @@ function Header() {
     setIsActive(updatedState);
   };
 
+
+
   return (
     <div>
+      {isAutenticaded ? 
+      <React.Fragment>
+
       <h1 className='text-2xl font-bold my-2'>dimm</h1>
       <nav className='my-2'>
         <div className="grid grid-cols-7 items-center gap-4">
@@ -68,6 +71,8 @@ function Header() {
           <Link onClick={() => handleClick('menu')}  to='/menu' className={`${isActive.menu ? 'border-b-2 border-blue-800' : null} col link-item`}><img src={isActive.menu ? menu : menuInactive} alt="" /></Link>
         </div>
       </nav>
+      </React.Fragment>
+  : ""}
     </div>
   );
 }

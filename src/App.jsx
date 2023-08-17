@@ -4,13 +4,16 @@ import Header from "./components/layout/Header";
 import Login from "./pages/Login";
 import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
+import IsLoading from "./middlewares/IsLoading";
 export default function App() {
   return (
     <AuthProvider>
       <Header />
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/profile" element={<h1>Profile</h1>} />
+        <Route element={<IsLoading/>}>
+         <Route path="/profile" element={<h1>Profile</h1>} />
+        </Route>
         <Route path="/attendance" element={<h1>Attendance</h1>} />
         <Route path="/clients" element={<h1>Clients</h1>} />
         <Route path="/employees" element={<h1>Employees</h1>} />
