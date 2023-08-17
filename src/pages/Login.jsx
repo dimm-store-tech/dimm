@@ -4,8 +4,12 @@ import "../styles/login.css";
 import { InputForm } from "../components/specific/ComponentsForm";
 import logo from "../assets/logo.svg";
 import { BsEyeSlash } from "react-icons/bs";
+import { useAuth } from "../context/AuthContext";
 export default function Login() {
+  const  {login} = useAuth()
+
   const [showPassword, setShowPassword] = useState(true);
+  console.log(import.meta.env.VITE_APP_API_URL)
   return (
     <div className="cont m-auto mt-12">
       <div className="image px-4 shadow-md">
@@ -20,7 +24,7 @@ export default function Login() {
           <Formik
             initialValues={{ user: "", password: "" }}
             onSubmit={async (values, actions) => {
-              console.log(values)
+              await login(values)
             }}
           >
             {({ values, handleChange, handleSubmit, isSubmitting }) => (
