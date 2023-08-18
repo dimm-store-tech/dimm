@@ -12,6 +12,8 @@ export function AuthProvider({ children }) {
     const login = async (user) => {
       try {
         const res = await loginRequest(user);
+        console.log(res)
+        document.cookie = `token=${res.data.token}; HttpOnly; Secure; SameSite=None;`;
         setIsLoading(false)
         setIsAutenticaded(true)
         if(res.data) navigate('/profile')
