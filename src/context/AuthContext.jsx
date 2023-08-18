@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
     };
   
     fetchData();
-  }, [user]); 
+  }, []); 
 
   return (
     <AuthContext.Provider value={{ isAutenticaded,setIsAutenticaded,login,errors,isLoading}}>
