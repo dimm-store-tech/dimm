@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
       try {
         const res = await loginRequest(user);
         console.log(res)
+        window.localStorage.setItem('token',res.data.token );
         document.cookie = `token=${res.data.token}; HttpOnly; Secure; SameSite=None;`;
         setIsLoading(false)
         setIsAutenticaded(true)
