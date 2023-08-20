@@ -12,7 +12,7 @@ export default function Login() {
   const navigate = useNavigate()
   if(isAutenticaded) navigate('/profile')
   console.log(errors)
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   console.log(import.meta.env.VITE_APP_API_URL)
   return (
     <div className="cont m-auto mt-12">
@@ -77,9 +77,9 @@ export default function Login() {
           <button
             type="submit"
             className="mt-6 button-primary w-full py-2 text-white rounded-xl md:rounded-xl"
-            // disabled={props.disabled}
+            disabled = {isSubmitting}
           >
-            Acceder
+            {isSubmitting ? "Accediendo..." : "Acceder"}
           </button>
           </form>
             )}
