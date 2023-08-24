@@ -6,7 +6,7 @@ import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
 import IsLoading from "./middlewares/IsLoading";
 import ProfilePage from "./pages/ProfilePage";
-import AuthRequired from "./middlewares/authRequired";
+import AuthRequired from "./middlewares/AuthRequired";
 export default function App() {
   return (
     <AuthProvider>
