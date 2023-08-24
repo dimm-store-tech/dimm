@@ -52,8 +52,6 @@ function Header() {
     setIsActive(updatedState);
   };
 
-
-
   return (
     <div>
       {isAutenticaded ? 

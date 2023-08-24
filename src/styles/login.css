@@ -16,9 +16,6 @@
     position: absolute;
     height: 650px;
     width: 650px;
-    background: conic-gradient(
-        transparent, transparent, transparent, #ff1504
-    );
     animation: animate 4s linear infinite;
     animation-delay: -2s;
 }
@@ -28,9 +25,6 @@
     position: absolute;
     height: 650px;
     width: 650px;
-    background: conic-gradient(
-        transparent, transparent, transparent, #3ca6fd
-    );
     animation: animate 4s linear infinite;
 }
 

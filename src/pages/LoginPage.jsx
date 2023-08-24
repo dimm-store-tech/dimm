@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert } from "@mui/material";
 import { Formik } from "formik";
 import "../styles/login.css";
@@ -8,12 +8,8 @@ import { BsEyeSlash } from "react-icons/bs";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 export default function Login() {
-  const  {login,errors, isAutenticaded} = useAuth()
-  const navigate = useNavigate()
-  if(isAutenticaded) navigate('/profile')
-  console.log(errors)
+  const  {login,errors} = useAuth()
   const [showPassword, setShowPassword] = useState(false);
-  console.log(import.meta.env.VITE_APP_API_URL)
   return (
     <div className="cont m-auto mt-12">
       <div className="image px-4 shadow-md">

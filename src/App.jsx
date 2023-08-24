@@ -1,18 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
-import Login from "./pages/Login";
+import Login from "./pages/LoginPage";
 import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
 import IsLoading from "./middlewares/IsLoading";
+import ProfilePage from "./pages/ProfilePage";
+import AuthRequired from "./middlewares/authRequired";
 export default function App() {
   return (
     <AuthProvider>
       <Header />
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route element={<IsLoading/>}>
-         <Route path="/profile" element={<h1>Profile</h1>} />
+        <Route element={<AuthRequired/>}>
+         <Route path="/profile" element={<ProfilePage/>} />
         </Route>
         <Route path="/attendance" element={<h1>Attendance</h1>} />
         <Route path="/clients" element={<h1>Clients</h1>} />

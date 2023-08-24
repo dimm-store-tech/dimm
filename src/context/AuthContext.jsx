@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { loginRequest, profileRequest } from "../api/auth.api";
 import { useNavigate } from "react-router-dom";
-
+import axios from '../api/axiosConfig'
 const AuthContext = createContext();
 export function AuthProvider({ children }) {
     const [isAutenticaded, setIsAutenticaded] = useState(false);
@@ -12,15 +12,16 @@ export function AuthProvider({ children }) {
     const login = async (user) => {
       try {
         const res = await loginRequest(user);
-        console.log(res)
         window.localStorage.setItem('token',res.data.token );
-        document.cookie = `token=${res.data.token}; HttpOnly; Secure; SameSite=None;`;
-        setIsLoading(false)
-        setIsAutenticaded(true)
-        if(res.data) navigate('/profile')
+        if(res.data) {
+          console.log(res.data.userFound)
+          setUser(res.data.userFound) 
+          setIsLoading(false)
+          setIsAutenticaded(true) 
+          navigate('/profile')
+        } 
       } catch (error) {
         setErrors(error.response.data)
-        console.log(error.response.data)
       }
     }
 
@@ -38,24 +39,27 @@ export function AuthProvider({ children }) {
     // Define la función asíncrona dentro del useEffect
     const fetchData = async () => {
       try {
+        const token = localStorage.getItem('token');
+        if(!token) return navigate('/login');
+        axios.defaults.headers['x-access-token'] = token; // Agrega el token a los encabezados
         const res = await profileRequest(); 
+        console.log(res.data)
         if(res.data) {
-          setIsAutenticaded(true);
           setUser(res.data)
+          setIsAutenticaded(true);
           setIsLoading(false)
           return
         }
       } catch (error) {
-        navigate('/login')
+        navigate('/login') //Navergar a la pagina de error
       }
 
     };
-  
-    fetchData();
+      fetchData();
   }, []); 
 
   return (
-    <AuthContext.Provider value={{ isAutenticaded,setIsAutenticaded,login,errors,isLoading}}>
+    <AuthContext.Provider value={{ isAutenticaded,setIsAutenticaded,login,errors,isLoading,user}}>
       {children}
     </AuthContext.Provider>
   );
