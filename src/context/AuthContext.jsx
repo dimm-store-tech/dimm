@@ -14,7 +14,6 @@ export function AuthProvider({ children }) {
         const res = await loginRequest(user);
         window.localStorage.setItem('token',res.data.token );
         if(res.data) {
-          console.log(res.data.userFound)
           setUser(res.data.userFound) 
           setIsLoading(false)
           setIsAutenticaded(true) 
@@ -25,6 +24,12 @@ export function AuthProvider({ children }) {
       }
     }
 
+    const logout = () => {
+      localStorage.removeItem('token');
+      setIsAutenticaded(false)
+      setUser(null);
+      navigate('/login')
+    }
   // Eliminar errores despues de 5 segundos
   useEffect(() => {
     if (errors.length > 0) {
@@ -43,7 +48,6 @@ export function AuthProvider({ children }) {
         if(!token) return navigate('/login');
         axios.defaults.headers['x-access-token'] = token; // Agrega el token a los encabezados
         const res = await profileRequest(); 
-        console.log(res.data)
         if(res.data) {
           setUser(res.data)
           setIsAutenticaded(true);
@@ -59,7 +63,7 @@ export function AuthProvider({ children }) {
   }, []); 
 
   return (
-    <AuthContext.Provider value={{ isAutenticaded,setIsAutenticaded,login,errors,isLoading,user}}>
+    <AuthContext.Provider value={{ isAutenticaded,setIsAutenticaded,login,errors,isLoading,user,logout}}>
       {children}
     </AuthContext.Provider>
   );
