@@ -5,6 +5,9 @@
 .link-item{
     cursor: pointer;
     padding: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 .link-item:hover{
     background-color: rgba(158, 154, 154, 0.295);

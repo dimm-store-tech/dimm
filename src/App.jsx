@@ -6,8 +6,9 @@ import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
 import AuthRequired from "./middlewares/AuthRequired";
-import EmployeePage from "./pages/EmployeePage";
 import MenuPage from "./pages/MenuPage";
+import EmployeeIndex from "./pages/Employees/EmployeeIndex";
+import UpdateEmployee from "./pages/Employees/UpdateEmployee";
 export default function App() {
   return (
     <AuthProvider>
@@ -19,7 +20,9 @@ export default function App() {
         </Route>
         <Route path="/attendance" element={<h1>Attendance</h1>} />
         <Route path="/clients" element={<h1>Clients</h1>} />
-        <Route path="/employees" element={<EmployeePage/>} />
+        {/* Employees */}
+        <Route path="/employees" element={<EmployeeIndex/>} />
+        <Route path="/employees/:id" element = {<UpdateEmployee/>} />
         <Route path="/orders" element={<h1>Orders</h1>} />
         <Route path="/menu" element={<MenuPage/>} />
         <Route path="/*" element={<h1>Not Found</h1>} />

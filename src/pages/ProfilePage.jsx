@@ -7,6 +7,7 @@ import ronilProfile from '../uploads/profile/ronil-profile.jpg'
 export default function ProfilePage() {
   // console.log(first)
   const { user } = useAuth();
+  // console.log(user)
 
   return (
     <div className="flex flex-col items-center mx-auto">
@@ -20,12 +21,12 @@ export default function ProfilePage() {
         </div>
       </div>
       {/* Text profile */}
-      <div className="text-center border bg-white w-full h-full color-text font-bold py-4">
+      <div className="text-center shadow-sm bg-zinc-900  w-full h-full  py-4">
         <h2 className="text-2xl">{`${user.paternal_surname} ${user.maternal_surname} ${user.name}`}</h2>
         <h2 className="color-text-primary my-2">{TextRole(user.role.name)}</h2>
         <h2>DNI: {user.dni}</h2>
-        <div className="border my-5 mt-16">
-          <p className="p-3 bg-gray-500  text-white font-normal">{DateComponent()}</p>
+        <div className="my-5 mt-16">
+          <p className="p-3 bg-gray-950  text-white font-normal">{DateComponent()}</p>
         </div>
       </div>
     </div>
